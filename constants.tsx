@@ -1,7 +1,7 @@
 
 import { Policy } from './types';
 import papa from './assets/papa.jpeg';
-import rm from './assets/rm.png';
+import rm from './assets/RM.png';
 import ju from './assets/jeevanumang.jpeg';
 import ja from './assets/jeevanumar.png';
 import jl from './assets/jeevanl.png';
