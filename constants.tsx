@@ -110,7 +110,223 @@ export const POLICIES: Policy[] = [
     ],
     premiumMode: ['Yearly', 'Half-yearly', 'Quarterly', 'Monthly'],
     termOptions: 'Policy Term: 13 to 25 years'
-  }
+  },
+  {
+  id: 'index-plus',
+  policyNumber: '873',
+  name: 'Index Plus',
+  category: 'ULIP',
+  tagline: 'Market-linked investment with life protection.',
+  description: 'A unit linked insurance plan offering life cover along with index-based market linked investment options.',
+  minSumAssured: 100000,
+  entryAgeRange: '90 days to 60 years',
+  keyBenefits: [
+    'Market linked returns.',
+    'Life insurance protection.',
+    'Fund switching facility.',
+    'Tax benefits under 80C & 10(10D).'
+  ],
+  imageUrl: `${ju}`,
+  documentsRequired: [
+    'PAN Card',
+    'Aadhar Card',
+    'Address Proof',
+    'Income Proof',
+    'Bank Details'
+  ],
+  premiumMode: ['Yearly', 'Half-yearly', 'Quarterly', 'Monthly'],
+  termOptions: 'Policy Term: 10 to 25 years'
+},
+
+{
+  id: 'nivesh-plus',
+  policyNumber: '749',
+  name: 'Nivesh Plus',
+  category: 'Single Premium ULIP',
+  tagline: 'Single premium investment with life cover.',
+  description: 'A unit linked single premium plan offering life cover and market linked growth opportunities.',
+  minSumAssured: 100000,
+  entryAgeRange: '90 days to 70 years',
+  keyBenefits: [
+    'Single premium payment.',
+    'Multiple fund options.',
+    'Partial withdrawal allowed.',
+    'Tax benefits applicable.'
+  ],
+  imageUrl: `${ju}`,
+  documentsRequired: [
+    'PAN Card',
+    'Aadhar Card',
+    'Address Proof',
+    'Bank Statement',
+    'Income Proof'
+  ],
+  premiumMode: ['Single Premium'],
+  termOptions: 'Policy Term: 10 to 25 years'
+},
+
+{
+  id: 'endowment-plus',
+  policyNumber: '935',
+  name: 'Endowment Plus',
+  category: 'ULIP Endowment',
+  tagline: 'Savings with market-linked returns.',
+  description: 'A unit linked endowment plan offering insurance protection along with market-linked investment growth.',
+  minSumAssured: 100000,
+  entryAgeRange: '90 days to 50 years',
+  keyBenefits: [
+    'Life cover + investment growth.',
+    'Fund switching facility.',
+    'Maturity benefit as fund value.',
+    'Tax benefits.'
+  ],
+  imageUrl: `${ju}`,
+  documentsRequired: [
+    'PAN Card',
+    'Aadhar Card',
+    'Address Proof',
+    'Income Proof',
+    'Photographs'
+  ],
+  premiumMode: ['Yearly', 'Half-yearly', 'Quarterly', 'Monthly'],
+  termOptions: 'Policy Term: 10 to 20 years'
+},
+
+{
+  id: 'siip',
+  policyNumber: '852',
+  name: 'LIC SIIP',
+  category: 'ULIP',
+  tagline: 'Systematic investment with protection.',
+  description: 'A unit linked insurance plan offering systematic investment with life cover and flexible premium options.',
+  minSumAssured: 100000,
+  entryAgeRange: '90 days to 65 years',
+  keyBenefits: [
+    'Flexible premium payment.',
+    'Fund switching allowed.',
+    'Partial withdrawals available.',
+    'Tax benefits applicable.'
+  ],
+  imageUrl: `${ju}`,
+  documentsRequired: [
+    'PAN Card',
+    'Aadhar Card',
+    'Address Proof',
+    'Income Proof',
+    'Bank Details'
+  ],
+  premiumMode: ['Yearly', 'Half-yearly', 'Quarterly', 'Monthly'],
+  termOptions: 'Policy Term: 10 to 25 years'
+},
+
+{
+  id: 'jeevan-utsav',
+  policyNumber: '871',
+  name: 'Jeevan Utsav',
+  category: 'Whole Life',
+  tagline: 'Guaranteed income with lifelong protection.',
+  description: 'A non-linked, non-participating plan offering guaranteed annual income benefits and life cover.',
+  minSumAssured: 500000,
+  entryAgeRange: '90 days to 65 years',
+  keyBenefits: [
+    'Guaranteed income benefit.',
+    'Lump sum on death.',
+    'Flexible premium options.',
+    'Tax benefits applicable.'
+  ],
+  imageUrl: `${ju}`,
+  documentsRequired: [
+    'PAN Card',
+    'Aadhar Card',
+    'Address Proof',
+    'Income Proof',
+    'Bank Details'
+  ],
+  premiumMode: ['Yearly', 'Half-yearly', 'Quarterly', 'Monthly'],
+  termOptions: 'Premium Paying Term: 5 to 16 years'
+},
+
+{
+  id: 'jeevan-shanti',
+  policyNumber: '858',
+  name: 'Jeevan Shanti',
+  category: 'Annuity',
+  tagline: 'Immediate and deferred annuity plan.',
+  description: 'A single premium annuity plan providing guaranteed annuity rates with immediate or deferred options.',
+  minSumAssured: 150000,
+  entryAgeRange: '30 to 79 years',
+  keyBenefits: [
+    'Guaranteed annuity rates.',
+    'Joint life option available.',
+    'Single premium payment.',
+    'Tax benefits as per rules.'
+  ],
+  imageUrl: `${ju}`,
+  documentsRequired: [
+    'PAN Card',
+    'Aadhar Card',
+    'Age Proof',
+    'Bank Details',
+    'Photograph'
+  ],
+  premiumMode: ['Single Premium'],
+  termOptions: 'Lifetime annuity'
+},
+
+{
+  id: 'single-premium-endowment',
+  policyNumber: '717',
+  name: 'Single Premium Endowment Plan',
+  category: 'Endowment',
+  tagline: 'One-time investment with guaranteed maturity.',
+  description: 'A non-linked endowment plan offering guaranteed maturity benefits with single premium payment.',
+  minSumAssured: 100000,
+  entryAgeRange: '8 to 55 years',
+  keyBenefits: [
+    'Single premium.',
+    'Guaranteed maturity.',
+    'Life cover.',
+    'Tax benefits.'
+  ],
+  imageUrl: `${ju}`,
+  documentsRequired: [
+    'PAN Card',
+    'Aadhar Card',
+    'Address Proof',
+    'Bank Details',
+    'Income Proof'
+  ],
+  premiumMode: ['Single Premium'],
+  termOptions: 'Policy Term: 10 to 25 years'
+},
+
+{
+  id: 'new-jeevan-anand',
+  policyNumber: '915',
+  name: 'New Jeevan Anand',
+  category: 'Endowment',
+  tagline: 'Savings with lifetime cover.',
+  description: 'A participating endowment plan offering maturity benefit along with lifelong risk cover.',
+  minSumAssured: 100000,
+  entryAgeRange: '18 to 50 years',
+  keyBenefits: [
+    'Maturity benefit with bonus.',
+    'Whole life cover.',
+    'Loan facility available.',
+    'Tax benefits under 80C & 10(10D).'
+  ],
+  imageUrl: `${ju}`,
+  documentsRequired: [
+    'PAN Card',
+    'Aadhar Card',
+    'Address Proof',
+    'Income Proof',
+    'Photographs'
+  ],
+  premiumMode: ['Yearly', 'Half-yearly', 'Quarterly', 'Monthly'],
+  termOptions: 'Policy Term: 15 to 35 years'
+}
+
 ];
 
 export const TEAM_MEMBERS = [

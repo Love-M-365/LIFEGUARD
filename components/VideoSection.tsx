@@ -1,6 +1,7 @@
 
 import React, { useState, useRef } from 'react';
 import insurance from '../assets/insurance.jpg';
+import ved from '../assets/ved.mp4'
 const VideoSection: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -66,7 +67,7 @@ const VideoSection: React.FC = () => {
                 onEnded={() => setIsPlaying(false)}
               >
                 {/* User can replace this source URL with their actual video file */}
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-financial-advisor-explaining-data-on-a-tablet-41228-large.mp4" type="video/mp4" />
+                <source src={ved} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
               
