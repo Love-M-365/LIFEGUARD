@@ -2,7 +2,12 @@
 import React from 'react';
 import home from '../assets/home.jpeg';
 import papa from '../assets/papa.jpeg';
-const Hero: React.FC = () => {
+interface HeroProps {
+  onBookClick: () => void;
+  onFreePlanClick: () => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onBookClick, onFreePlanClick }) => {
   return (
     <section id="home" className="relative bg-[#002147] min-h-[90vh] flex items-center pt-24 pb-32 overflow-hidden">
       {/* Premium Background Elements */}
@@ -12,7 +17,7 @@ const Hero: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="text-white">
+          <div className="text-white animate-fade-up">
             <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-5 py-2 mb-8 animate-fade-in">
               <span className="flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-[#D4AF37] opacity-75"></span>
@@ -30,9 +35,27 @@ const Hero: React.FC = () => {
             <p className="text-lg text-blue-100/70 mb-10 max-w-xl leading-relaxed">
               We don't just sell insurance policies; we build fortresses around your family's dreams. Experience the pinnacle of financial security with India's most trusted advisor.
             </p>
-            
-            
-            
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button
+                onClick={onFreePlanClick}
+                className="btn-shine animate-glow-ring inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#FFD56B] to-[#D4AF37] text-[#2a1200] px-8 py-4 rounded-full font-black text-base hover:scale-105 active:scale-95 transition-transform"
+              >
+                <i className="fa-solid fa-gift animate-wiggle"></i>
+                Get FREE Insurance Plan
+              </button>
+              <button
+                onClick={onBookClick}
+                className="inline-flex items-center justify-center gap-3 border border-white/25 bg-white/5 backdrop-blur px-8 py-4 rounded-full font-bold text-base hover:bg-white hover:text-[#002147] transition-all"
+              >
+                <i className="fa-brands fa-whatsapp"></i>
+                Book Consultation
+              </button>
+            </div>
+            <p className="mt-4 text-sm text-[#FFD56B]/90 font-semibold">
+              🪔 Diwali offer: gifts worth up to ₹5,000 for new policy holders*
+            </p>
+
             <div className="mt-16 flex flex-wrap items-center gap-10 opacity-60 grayscale hover:grayscale-0 transition-all">
               <div className="flex items-center gap-2">
                 <i className="fa-solid fa-award text-3xl text-[#D4AF37]"></i>
@@ -49,7 +72,7 @@ const Hero: React.FC = () => {
             </div>
           </div>
           
-          <div className="relative">
+          <div className="relative animate-fade-up [animation-delay:200ms]">
             <div className="absolute -inset-4 bg-[#D4AF37] rounded-[40px] rotate-3 blur-2xl opacity-10"></div>
             <div className="relative z-10 rounded-[32px] overflow-hidden border-8 border-white/10 shadow-2xl">
               <img 
@@ -75,6 +98,17 @@ const Hero: React.FC = () => {
               </div>
             </div>
             
+            {/* Diwali Floater */}
+            <button onClick={onFreePlanClick} className="absolute -bottom-8 -right-4 sm:-right-8 z-20 bg-gradient-to-br from-[#c2410c] to-[#7a1f00] text-white p-5 rounded-2xl shadow-2xl animate-float text-left hover:scale-105 transition-transform">
+              <div className="flex items-center gap-3">
+                <span className="text-3xl">🪔</span>
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-[#FFD56B]">Diwali Gifts</p>
+                  <p className="text-xl font-black leading-tight">Worth ₹5,000</p>
+                </div>
+              </div>
+            </button>
+
             {/* Stats Floater */}
             <div className="absolute -top-10 -left-10 bg-white p-6 rounded-2xl shadow-2xl hidden xl:block animate-bounce-slow">
               <div className="flex items-center gap-4">

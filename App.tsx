@@ -10,12 +10,18 @@ import VideoSection from './components/VideoSection';
 import Footer from './components/Footer';
 import PolicyModal from './components/PolicyModal';
 import BookingModal from './components/BookingModal';
+import DiwaliBar from './components/DiwaliBar';
+import DiwaliOffer from './components/DiwaliOffer';
+import FreeInsuranceCTA from './components/FreeInsuranceCTA';
+import LeadFormModal from './components/LeadFormModal';
+import Reveal from './components/Reveal';
 import { POLICIES } from './constants';
 import { Policy } from './types';
 
 const App: React.FC = () => {
   const [selectedPolicy, setSelectedPolicy] = useState<Policy | null>(null);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [isLeadFormOpen, setIsLeadFormOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
   const categories = [
@@ -39,21 +45,28 @@ const App: React.FC = () => {
 
   // Prevent scrolling when modals are open
   useEffect(() => {
-    if (selectedPolicy || isBookingOpen) {
+    if (selectedPolicy || isBookingOpen || isLeadFormOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
     }
-  }, [selectedPolicy, isBookingOpen]);
+  }, [selectedPolicy, isBookingOpen, isLeadFormOpen]);
 
   const openBooking = () => setIsBookingOpen(true);
+  const openLeadForm = () => {
+    setSelectedPolicy(null);
+    setIsBookingOpen(false);
+    setIsLeadFormOpen(true);
+  };
 
   return (
     <div className="min-h-screen selection:bg-[#D4AF37] selection:text-[#002147]">
+      <DiwaliBar onClaim={openLeadForm} />
       <Navbar onBookClick={openBooking} />
-      
+
       <main>
-        <Hero onBookClick={openBooking} />
+        <Hero onBookClick={openBooking} onFreePlanClick={openLeadForm} />
+        <DiwaliOffer onClaim={openLeadForm} />
 
         {/* Policies Section */}
         <section id="policies" className="py-20 sm:py-24 bg-slate-50 relative overflow-hidden">
@@ -62,6 +75,7 @@ const App: React.FC = () => {
           <div className="max-w-7xl mx-auto px-4">
             
             {/* Section Header */}
+            <Reveal>
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-14 gap-8">
               <div className="max-w-xl">
                 <span className="text-[#D4AF37] font-bold tracking-[0.3em] uppercase text-xs mb-4 block">
@@ -95,15 +109,17 @@ const App: React.FC = () => {
                 </div>
               </div>
             </div>
+            </Reveal>
 
             {/* Policies Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6 lg:gap-7">
-              {filteredPolicies.map((policy) => (
-                <PolicyCard
-                  key={policy.id}
-                  policy={policy}
-                  onViewDetails={(p) => setSelectedPolicy(p)}
-                />
+              {filteredPolicies.map((policy, i) => (
+                <Reveal key={policy.id} delay={(i % 4) * 100} className="h-full">
+                  <PolicyCard
+                    policy={policy}
+                    onViewDetails={(p) => setSelectedPolicy(p)}
+                  />
+                </Reveal>
               ))}
             </div>
 
@@ -118,10 +134,10 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        <TeamSection />
-        <VideoSection onSubscribeClick={openBooking} />
-        <Calculator />
-        <PolicyAdvisor />
+        <Reveal><TeamSection /></Reveal>
+        <Reveal><VideoSection onSubscribeClick={openBooking} /></Reveal>
+        <Reveal><Calculator /></Reveal>
+        <Reveal><PolicyAdvisor /></Reveal>
 
       </main>
 
@@ -137,6 +153,15 @@ const App: React.FC = () => {
           onClose={() => setIsBookingOpen(false)} 
         />
       )}
+
+      {isLeadFormOpen && (
+        <LeadFormModal onClose={() => setIsLeadFormOpen(false)} />
+      )}
+
+      <FreeInsuranceCTA
+        onOpen={openLeadForm}
+        suppressed={!!selectedPolicy || isBookingOpen || isLeadFormOpen}
+      />
 
       <Footer />
     </div>

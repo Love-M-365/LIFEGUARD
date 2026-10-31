@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Secrets (MongoDB URI, admin password, encryption key)
+.env
