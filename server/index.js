@@ -2,6 +2,7 @@
 // Leads go to MongoDB; PAN/Aadhaar/bank details and the generated PDF are AES-256-GCM encrypted at rest.
 import express from 'express';
 import crypto from 'crypto';
+import dns from 'dns';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
@@ -16,7 +17,12 @@ const {
   AGENT_NAME = 'Love Maggo',
   AGENT_CODE = '3594',
   PORT = 5000,
+  DNS_SERVERS,
 } = process.env;
+
+// Some local DNS proxies (VPNs, Docker, antivirus) refuse the SRV lookups that
+// mongodb+srv:// URIs need. DNS_SERVERS=8.8.8.8,1.1.1.1 bypasses them.
+if (DNS_SERVERS) dns.setServers(DNS_SERVERS.split(',').map((s) => s.trim()));
 
 for (const [k, v] of Object.entries({ MONGODB_URI, ADMIN_PASSWORD, ENCRYPTION_KEY })) {
   if (!v) {

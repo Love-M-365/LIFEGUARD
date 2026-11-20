@@ -1,10 +1,12 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+// Created on first use so a missing key only disables the advisor, not the whole site.
+let ai: GoogleGenAI | null = null;
 
 export const getPolicyAdvice = async (userInput: string) => {
   try {
+    ai ??= new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: `You are a professional LIC (Life Insurance Corporation of India) expert advisor. 
@@ -22,6 +24,6 @@ export const getPolicyAdvice = async (userInput: string) => {
     return response.text;
   } catch (error) {
     console.error("Gemini Error:", error);
-    return "I'm sorry, I'm having trouble connecting to the insurance database right now. Please try again or contact our agent directly at +91 98XXX-XXXXX.";
+    return "I'm sorry, I'm having trouble connecting to the insurance database right now. Please try again or contact our agent directly at +91 95405 98999.";
   }
 };
